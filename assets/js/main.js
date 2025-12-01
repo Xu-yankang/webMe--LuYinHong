@@ -85,11 +85,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			var descElement = document.getElementById('description');
 			if (descElement && res.hitokoto && res.from) {
 				// Create text nodes to prevent XSS
-				var textNode = document.createTextNode(res.hitokoto);
+				// var textNode = document.createTextNode(res.hitokoto);
+				var textNode = document.createTextNode('欢迎来到人间游乐场！');
+
 				var br = document.createElement('br');
 				var fromText = document.createTextNode(' -「');
+				
 				var strong = document.createElement('strong');
-				strong.textContent = res.from;
+				// strong.textContent = res.from;
+				strong.textContent = "—— 小鹿女士";
+
 				var endText = document.createTextNode('」');
 				
 				descElement.innerHTML = '';
