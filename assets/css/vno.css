@@ -9693,9 +9693,10 @@ i {
 }
 
 .blog-popup-desc {
-    margin-top: 12px;
+    margin-top: 20px;
     font-size: 14px;
-    color: #666
+    color: #666;
+    text-align: left
 }
 
 .email-expand-panel {
