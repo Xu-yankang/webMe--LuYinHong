@@ -1,0 +1,10 @@
+getCustomSignatures([
+  {
+    "content": "欢迎来到人间游乐场",
+    "author": "小鹿女士"
+  },
+  {
+    "content": "时间扑面而来，未来离你而去。",
+    "author": "康康"
+  }
+]);

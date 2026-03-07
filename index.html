@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Melody Home">
+    <meta name="keywords" content="Dmego,Homepage">
+    <meta name="author" content="Dmego">
+    <title>Melody Home</title>
+    <link rel="preconnect" href="https://www.cn.bing.com" crossorigin>
+    <link rel="preconnect" href="https://github.com" crossorigin>
+    <link rel="preload" href="./assets/css/vno.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="./assets/js/main.js" as="script">
+    <link rel="preload" href="./assets/css/iconfont.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vno.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="./assets/css/iconfont.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="./assets/css/vno.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/iconfont.css">
+    </noscript>
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="icon" href="./favicon.ico">
+</head>
+
+<body>
+    <span class="mobile btn-mobile-menu">
+        <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
+        <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
+    </span>
+    <header id="panel" class="panel-cover">
+        <div class="panel-main">
+            <div class="panel-main__inner panel-inverted">
+                <div class="panel-main__content">
+                    <div class="ih-item circle effect right_to_left">            
+                        <a href="#" title="" class="blog-button">
+                            <div class="img"><img id="avatar" src="./assets/img/myself/01.png" alt="img" class="js-avatar iUp profilepic"></div>
+                            <div class="info iUp">
+                                <div class="info-back">
+                                    <h2>Be Brave</h2>
+                                    <p>2026 · 勇敢</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <h1 class="panel-cover__title panel-title iUp">
+                        <a href="#" title="Melody Home">陆胤宏</a>
+                    </h1>
+                    <p id="motto" class="panel-cover__subtitle panel-subtitle iUp">Pretty·Happy·Earnestly</p>
+                    <hr class="panel-cover__divider iUp" />
+                    <p id="description" class="panel-cover__description iUp">欢迎来到人间游乐场！
+                        <br/>
+                        <strong>—— 小鹿女士</strong>
+                    </p>
+                    <div class="navigation-wrapper iUp">
+                        <div>
+                            <nav class="cover-navigation cover-navigation--primary">
+                                <ul class="navigation">
+                                    <li class="navigation__item">
+                                        <a href="/" class="blog-button">首页</a>
+                                    </li>
+                                     <li class="navigation__item">
+                                        <a href="#" class="blog-button" onclick="event.preventDefault(); toggleBlogPopup();">博客</a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="#" class="blog-button" onclick="event.preventDefault(); alert('简历功能暂未开放');">简历</a>
+                                    </li>
+                                    <li class="navigation__item">
+                                        <a href="about.html" class="blog-button">关于</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="iUp">
+                            <nav class="cover-navigation navigation--social">
+                                <ul class="navigation">
+                                    <li class="navigation__item">
+                                        <a href="javascript:void(0);" title="email" class="email-toggle-btn">
+                                            <i class='social iconfont icon-email'></i>
+                                            <span class="label">email</span>
+                                        </a>
+                                        <div class="email-expand-panel">
+                                            <span class="email-text">1450499496@qq.com</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-cover--overlay cover-slate"></div>
+        </div>
+        <div class="remark iUp">
+            <p class="power">Powered By 
+                <a href="https://github.com/features/actions" target="_blank" rel="noopener noreferrer"> GitHub Actions </a> And 
+                <a href="https://hitokoto.cn/" target="_blank" rel="noopener noreferrer"> Hitokoto </a>
+            </p>
+        </div>
+    </header>
+
+
+    <div class="blog-popup-overlay" id="blogPopupOverlay" onclick="closeBlogPopup()"></div>
+    <div class="blog-popup" id="blogPopup">
+        <button class="blog-popup-close" onclick="closeBlogPopup()">×</button>
+        <img src="./assets/img/wechat.jpg" alt="微信二维码" class="blog-popup-img">
+    </div>
+
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
+    <script type="text/javascript" src="./assets/json/motto.json?cb=getMotto"></script>
+    <script type="text/javascript" src="./assets/json/signatures.json?cb=getCustomSignatures"></script>
+    
+
+</body>
+</html>

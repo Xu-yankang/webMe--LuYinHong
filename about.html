@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<!-- 头部信息 -->
+<head>
+    <!-- Meta标签，用于设置页面的元数据 -->
+    <meta charset="utf-8"> <!-- 页面编码为UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 兼容IE浏览器 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 响应式布局设置 -->
+    <meta name="description" content="关于Melody"> <!-- 页面描述 -->
+    <meta name="keywords" content="Dmego,Homepage,About"> <!-- 页面关键词 -->
+    <meta name="author" content="Dmego"> <!-- 页面作者 -->
+    <title>关于Melody</title> <!-- 页面标题 -->
+    
+    <!-- 预连接到外部域名 -->
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://www.cn.bing.com" crossorigin>
+    
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="assets/css/vno.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="./assets/js/main.js" as="script">
+    
+    <!-- 引入外部CSS样式文件 -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vno.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="assets/css/vno.css">
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css">
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
+    </noscript>
+    
+    <!-- 设置页面图标 -->
+    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
+    <link rel="icon" href="https://unpkg.com/dmego-home-page@latest/favicon.ico">
+    
+    <!-- 自定义样式 -->
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 确保页面可以滚动 */
+        html, body {
+            height: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* 优化移动端滚动体验 */
+        }
+        
+        /* 确保在小屏幕上有足够的滚动空间 */
+        body {
+            padding-bottom: 60px;
+        }
+        
+        /* 简约风格的关于内容 */
+        .about-content {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        /* 简化的区块样式 */
+        .about-section {
+            margin-bottom: 15px;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        /* 简化的标题样式 */
+        .about-section h2 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 简化的段落样式 */
+        .about-section p {
+            line-height: 1.4;
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 链接样式 */
+        .about-section a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .about-section a:hover {
+            text-decoration: none;
+        }
+        
+        /* 使用与首页相同的分割线样式 */
+        .panel-cover__divider {
+            width: 50%;
+            margin: 20px auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        
+        /* 返回首页按钮 */
+        .back-button {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 8px 16px;
+            background-color: transparent;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            border-color: #fff;
+        }
+        
+        /* 页脚样式 */
+        .remark {
+            margin-top: 15px;
+            padding: 10px;
+        }
+        
+        .remark p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            /* 确保在小屏幕上有足够的内边距 */
+            body {
+                padding: 0 8px;
+            }
+            
+            .about-content {
+                padding: 8px;
+            }
+            
+            .about-section {
+                margin-bottom: 12px;
+                padding: 15px 0;
+            }
+            
+            .about-section h2 {
+                font-size: 15px;
+            }
+            
+            .about-section p {
+                font-size: 12px;
+            }
+            
+            .back-button {
+                padding: 8px 16px;
+                font-size: 13px;
+                min-height: 40px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        /* 针对非常小的屏幕 */
+        @media (max-width: 320px) {
+            .about-section {
+                margin-bottom: 10px;
+                padding: 12px 0;
+            }
+            
+            .about-section h2 {
+                font-size: 14px;
+            }
+            
+            .about-section p {
+                font-size: 11px;
+            }
+        }
+        
+        /* 调整面板高度 */
+        #panel {
+            background-attachment: scroll;
+        }
+        
+        /* 登录对话框样式 */
+        .login-dialog {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 0;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #fff;
+        }
+        
+        .login-dialog-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .login-dialog-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+        
+        .login-dialog-close {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .login-dialog-close:hover {
+            color: #fff;
+        }
+        
+        .login-dialog-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .login-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .login-error {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(255, 87, 87, 0.2);
+            border: 1px solid rgba(255, 87, 87, 0.4);
+            border-radius: 4px;
+            color: #ff5757;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+
+<!-- 页面主体内容 -->
+<body>
+    <!-- 移动端菜单按钮 -->
+    <span class="mobile btn-mobile-menu">
+        <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
+        <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <!-- 页面头部区域 -->
+    <header id="panel" class="panel-cover">
+        <div class="panel-main">
+            <div class="panel-main__inner panel-inverted">
+                <div class="panel-main__content">
+                    <!-- 页面主标题 -->
+                    <h1 class="panel-cover__title panel-title iUp">
+                        <a href="index.html" title="Melody Home">关于Melody</a>
+                    </h1>
+                    <hr class="panel-cover__divider iUp" />
+
+                    <!-- 关于页面内容 -->
+                    <div class="about-content iUp">
+                        <!-- 网页开发信息 -->
+                        <div class="about-section">
+                            <h2>开发信息</h2>
+                            <p>开发日期：2025年1月</p>
+                            <p>开发工具：TRAE AI IDE</p>
+                            <p>框架：自定义静态页面</p>
+                        </div>
+                        <hr class="panel-cover__divider iUp" />
+                        <!-- 域名信息 -->
+                        <div class="about-section">
+                            <h2>域名信息</h2>
+                            <p>提供商：火山引擎</p>
+                            <p>状态：已备案使用</p>
+                        </div>
+                        <hr class="panel-cover__divider iUp" />
+                        <!-- 管理台信息 -->
+                        <div class="about-section">
+                            <h2>管理台</h2>
+                            <p>管理员登录后可进行内容管理</p>
+                            <p><a href="#" onclick="showLoginDialog(); return false;" style="color: #fff; text-decoration: underline;">访问管理台</a></p>
+                        </div>
+
+                    <!-- 登录对话框 -->
+                    <div id="loginDialog" class="login-dialog">
+                        <div class="login-dialog-header">
+                            <h3>管理员登录</h3>
+                            <span class="login-dialog-close" onclick="closeLoginDialog()">&times;</span>
+                        </div>
+                        <div class="login-dialog-body">
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label for="username">用户名</label>
+                                    <input type="text" id="username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">密码</label>
+                                    <input type="password" id="password" name="password" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="login-button">登录</button>
+                                </div>
+                            </form>
+                            <div id="loginError" class="login-error"></div>
+                        </div>
+                    </div>
+
+                        <!-- 返回首页按钮 -->
+                        <a href="index.html" class="back-button">返回首页</a>
+                    </div>
+
+                    <!-- 页面底部版权信息 -->
+                    <div class="remark iUp">
+                        <p class="power">Powered By 
+                            <a href="https://github.com/features/actions" target="_blank"> GitHub Actions </a> And 
+                            <a href="https://trae.ai/" target="_blank"> TRAE AI </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-cover--overlay cover-slate"></div>
+        </div>
+    </header>
+    
+    <!-- 引入外部JavaScript文件 -->
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+    <!-- 引入Bing图片数据JSON -->
+    <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
+    
+    <!-- 登录对话框JavaScript -->
+    <script>
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', function() {
+            // 显示登录对话框
+            function showLoginDialog() {
+                document.getElementById('loginDialog').style.display = 'block';
+            }
+            
+            // 关闭登录对话框
+            function closeLoginDialog() {
+                document.getElementById('loginDialog').style.display = 'none';
+                document.getElementById('loginError').style.display = 'none';
+                document.getElementById('loginForm').reset();
+            }
+            
+            // 点击对话框外部关闭对话框
+            window.onclick = function(event) {
+                var dialog = document.getElementById('loginDialog');
+                if (event.target == dialog) {
+                    closeLoginDialog();
+                }
+            }
+            
+            // 登录表单提交处理
+            document.getElementById('loginForm').onsubmit = function(event) {
+                event.preventDefault();
+                
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                var errorDiv = document.getElementById('loginError');
+                
+                // 加载管理员配置文件
+                fetch('./assets/json/admin-config.json')
+                    .then(response => response.json())
+                    .then(config => {
+                        // 验证用户名和密码（都应该是admin）
+                        if (username === 'admin' && password === 'admin') {
+                            // 登录成功，跳转到管理台页面
+                            window.location.href = 'admin.html';
+                        } else {
+                            errorDiv.innerHTML = '用户名或密码错误';
+                            errorDiv.style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        errorDiv.innerHTML = '登录失败：' + error.message;
+                        errorDiv.style.display = 'block';
+                    });
+            }
+            
+            // 导出函数到全局作用域
+            window.showLoginDialog = showLoginDialog;
+            window.closeLoginDialog = closeLoginDialog;
+        });
+    </script>
+</body>
+</html>
