@@ -11,6 +11,8 @@ function fetchBingImages() {
       method: 'GET'
     }
 
+    console.log('正在获取Bing壁纸数据...')
+
     const req = https.request(options, bing_res => {
       const chunks = [];
       bing_res.on('data', (chunk) => {
@@ -22,7 +24,7 @@ function fetchBingImages() {
           const data = JSON.parse(bing_data);
           const img_url = data.images.map(img => img.url);
           const jsonpStr = "getBingImages(" + JSON.stringify(img_url) + ")";
-          const filePath = path.join(__dirname, '../../assets/json/images.json');
+          const filePath = path.join(__dirname, '../assets/json/images.json');
           
           fs.writeFile(filePath, jsonpStr, (err) => {
             if (err) {
@@ -31,6 +33,9 @@ function fetchBingImages() {
             } else {
               console.log("Bing壁纸数据已更新: " + new Date().toLocaleString());
               console.log("获取到 " + img_url.length + " 张壁纸");
+              img_url.forEach((url, i) => {
+                console.log(`  ${i + 1}. ${url.split('?')[0]}`);
+              });
               resolve(img_url);
             }
           });
@@ -55,11 +60,12 @@ function fetchBingImages() {
   })
 }
 
-module.exports = { fetchBingImages };
-
-if (require.main === module) {
-  fetchBingImages().catch(err => {
-    console.error('手动获取Bing壁纸失败:', err);
+fetchBingImages()
+  .then(() => {
+    console.log('更新完成！');
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error('更新失败:', err.message);
     process.exit(1);
   });
-}

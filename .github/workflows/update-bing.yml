@@ -1,0 +1,43 @@
+name: Update Bing Images
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Fetch Bing images
+        run: node scripts/fetch-bing.js
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --exit-code assets/json/images.json || echo "has_changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/json/images.json
+          git commit -m "chore: update Bing images [skip ci]"
+          git push
+      
+      - name: No changes
+        if: steps.check_changes.outputs.has_changes != 'true'
+        run: echo "No new images to update"
