@@ -13,4 +13,4 @@
 
 - 访问地址：[个人主页](https://www.luyinhong.site/)
 - ~~使用了 [一言](http://hitokoto.cn/) 的 API 服务~~
-- 使用 [Bing 官方 API](https://www.bing.com/) 获取每日壁纸
+- 使用 [Bing 官方 API](https://www.bing.com/) 获取壁纸，GitHub Actions 每8天更新壁纸缓存
