@@ -22,6 +22,43 @@
     </noscript>
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="icon" href="./favicon.ico">
+    <style>
+        .resume-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 15px 0 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .resume-input:focus {
+            border-color: #4a6fa5;
+        }
+        .resume-error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin: 5px 0;
+            display: none;
+        }
+        .resume-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a6fa5;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .resume-submit:hover {
+            background-color: #3a5a8a;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,7 +101,7 @@
                                         <a href="#" class="blog-button" onclick="event.preventDefault(); toggleBlogPopup();">博客</a>
                                     </li>
                                     <li class="navigation__item">
-                                        <a href="./assets/img/陆胤宏-行业运营简历V1.pdf" class="blog-button" target="_blank">简历</a>
+                                        <a href="#" class="blog-button" onclick="event.preventDefault(); toggleResumePopup();">简历</a>
                                     </li>
                                     <li class="navigation__item">
                                         <a href="about.html" class="blog-button">关于</a>
@@ -107,11 +144,67 @@
         <img src="./assets/img/wechat.jpg" alt="微信二维码" class="blog-popup-img">
     </div>
 
+    <div class="blog-popup-overlay" id="resumePopupOverlay" onclick="closeResumePopup()"></div>
+    <div class="blog-popup" id="resumePopup">
+        <button class="blog-popup-close" onclick="closeResumePopup()">×</button>
+        <div class="blog-popup-title">简历验证</div>
+        <p class="blog-popup-desc">请输入手机号以查看简历</p>
+        <input type="text" id="resumePassword" class="resume-input" placeholder="请输入手机号" maxlength="11">
+        <p class="resume-error" id="resumeError">手机号错误，请重新输入</p>
+        <button class="resume-submit" onclick="verifyResume()">确认</button>
+    </div>
+
     <script type="text/javascript" src="./assets/js/main.js"></script>
     <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
     <script type="text/javascript" src="./assets/json/motto.json?cb=getMotto"></script>
     <script type="text/javascript" src="./assets/json/signatures.json?cb=getCustomSignatures"></script>
     
+    <script>
+        function toggleResumePopup() {
+            const popup = document.getElementById('resumePopup');
+            const overlay = document.getElementById('resumePopupOverlay');
+            if (popup && overlay) {
+                popup.classList.toggle('show');
+                overlay.classList.toggle('show');
+                document.getElementById('resumePassword').value = '';
+                document.getElementById('resumeError').style.display = 'none';
+            }
+        }
 
+        function closeResumePopup() {
+            const popup = document.getElementById('resumePopup');
+            const overlay = document.getElementById('resumePopupOverlay');
+            if (popup && overlay) {
+                popup.classList.remove('show');
+                overlay.classList.remove('show');
+                document.getElementById('resumePassword').value = '';
+                document.getElementById('resumeError').style.display = 'none';
+            }
+        }
+
+        function verifyResume() {
+            const password = document.getElementById('resumePassword').value;
+            const errorElement = document.getElementById('resumeError');
+            
+            if (password === '18101461635') {
+                closeResumePopup();
+                window.open('./assets/img/resume.pdf', '_blank');
+            } else {
+                errorElement.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeResumePopup();
+            }
+        });
+
+        document.getElementById('resumePassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verifyResume();
+            }
+        });
+    </script>
 </body>
 </html>
